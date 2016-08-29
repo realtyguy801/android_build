@@ -107,7 +107,7 @@ $(LOCAL_BUILT_MODULE): PRIVATE_DEX_FILE := $(built_dex)
 $(LOCAL_BUILT_MODULE): PRIVATE_SOURCE_ARCHIVE := $(full_classes_jarjar_jar)
 $(LOCAL_BUILT_MODULE): PRIVATE_DONT_DELETE_JAR_DIRS := $(LOCAL_DONT_DELETE_JAR_DIRS)
 $(LOCAL_BUILT_MODULE): $(built_dex) $(java_resource_sources)
-	@echo "Host Jar: $(PRIVATE_MODULE) ($@)"
+	@echo -e ${CL_GRN}"Host Jar:"${CL_RST}" $(PRIVATE_MODULE) ($@)"
 	$(call initialize-package-file,$(PRIVATE_SOURCE_ARCHIVE),$@)
 	$(add-dex-to-package)
 
@@ -135,7 +135,7 @@ $(built_dex): $(jack_all_deps) | setup-jack-server
 	$(jack-java-to-dex)
 
 $(jack_check_timestamp): $(jack_all_deps) | setup-jack-server
-	@echo Checking build with Jack: $@
+	@echo -e ${CL_GRN}"Building with Jack:"${CL_RST}" $@"
 	$(jack-check-java)
 
 # $(full_classes_jack) is just by-product of $(built_dex).
@@ -146,7 +146,7 @@ $(full_classes_jack): $(built_dex)
 
 $(LOCAL_BUILT_MODULE): PRIVATE_DEX_FILE := $(built_dex)
 $(LOCAL_BUILT_MODULE): $(built_dex) $(java_resource_sources)
-	@echo "Host Jar: $(PRIVATE_MODULE) ($@)"
+	@echo -e ${CL_GRN}"Host Jar:"${CL_RST}" $(PRIVATE_MODULE) ($@)"
 	$(create-empty-package)
 	$(add-dex-to-package)
 	$(add-carried-jack-resources)
