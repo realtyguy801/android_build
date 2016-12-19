@@ -53,7 +53,8 @@ if [ "$TARGET_UNIFIED_DEVICE" == "" ] ; then
   echo "# ro.build.product is obsolete; use ro.product.device"
   echo "ro.build.product=$TARGET_DEVICE"
   if [ -z "$TARGET_SKIP_PRODUCT_DEVICE" ] ; then
-    echo "ro.product.model=$PRODUCT_MODEL"
+    echo "ro.product.model=Pixel"
+    echo "ro.product.real.model=$PRODUCT_MODEL"
   fi
   echo "ro.product.device=$TARGET_DEVICE"
   echo "# Do not try to parse description, fingerprint, or thumbprint"
@@ -66,5 +67,7 @@ fi
 echo "ro.build.characteristics=$TARGET_AAPT_CHARACTERISTICS"
 
 echo "ro.rr.device=$CM_DEVICE"
+
+echo "ro.opa.eligible_device=true"
 
 echo "# end build properties"
