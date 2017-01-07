@@ -132,11 +132,15 @@ function check_product()
         return
     fi
 
-    if (echo -n $1 | grep -q -e "^cm_") ; then
-       CM_BUILD=$(echo -n $1 | sed -e 's/^cm_//g')
-       export BUILD_NUMBER=$((date +%s%N ; echo $CM_BUILD; hostname) | openssl sha1 | sed -e 's/.*=//g; s/ //g' | cut -c1-10)
+    if (echo -n $1 | grep -q -e "^") ; then
+        CM_BUILD=$(echo -n $1 | sed -e 's/^lineage_//g')
+        export BUILD_NUMBER=$( (date +%s%N ; echo $CM_BUILD; hostname) | openssl sha1 | sed -e 's/.*=//g; s/ //g' | cut -c1-10 )
+    elif (echo -n $1 | grep -q -e "^") ; then
+        # Fall back to cm_<product>
+        CM_BUILD=$(echo -n $1 | sed -e 's/^cm_//g')
+        export BUILD_NUMBER=$( (date +%s%N ; echo $CM_BUILD; hostname) | openssl sha1 | sed -e 's/.*=//g; s/ //g' | cut -c1-10 )
     else
-       CM_BUILD=
+        CM_BUILD=
     fi
     export CM_BUILD
 
@@ -624,15 +628,15 @@ function lunch()
     then
         # if we can't find a product, try to grab it off the CM github
         T=$(gettop)
-        pushd $T > /dev/null
+        cd $T > /dev/null
         vendor/cm/build/tools/roomservice.py $product
-        popd > /dev/null
+        cd - > /dev/null
         check_product $product
     else
         T=$(gettop)
-        pushd $T > /dev/null
+        cd $T > /dev/null
         vendor/cm/build/tools/roomservice.py $product true
-        popd > /dev/null
+        cd - > /dev/null
     fi
     TARGET_PRODUCT=$product \
     TARGET_BUILD_VARIANT=$variant \
