@@ -77,6 +77,4 @@ echo "ro.build.characteristics=$TARGET_AAPT_CHARACTERISTICS"
 
 echo "ro.rr.device=$CM_DEVICE"
 
-echo "ro.opa.eligible_device=true"
-
 echo "# end build properties"
