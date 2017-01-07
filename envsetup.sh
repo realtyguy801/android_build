@@ -132,10 +132,10 @@ function check_product()
         return
     fi
 
-    if (echo -n $1 | grep -q -e "^lineage_") ; then
+    if (echo -n $1 | grep -q -e "^") ; then
         CM_BUILD=$(echo -n $1 | sed -e 's/^lineage_//g')
         export BUILD_NUMBER=$( (date +%s%N ; echo $CM_BUILD; hostname) | openssl sha1 | sed -e 's/.*=//g; s/ //g' | cut -c1-10 )
-    elif (echo -n $1 | grep -q -e "^cm_") ; then
+    elif (echo -n $1 | grep -q -e "^") ; then
         # Fall back to cm_<product>
         CM_BUILD=$(echo -n $1 | sed -e 's/^cm_//g')
         export BUILD_NUMBER=$( (date +%s%N ; echo $CM_BUILD; hostname) | openssl sha1 | sed -e 's/.*=//g; s/ //g' | cut -c1-10 )
