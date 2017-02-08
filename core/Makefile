@@ -2262,7 +2262,8 @@ bootzip: bootimage
 	   $(BOOT_ZIP_FROM_IMAGE_SCRIPT) \
 	   $(recovery_fstab) \
 	   $(OUT) \
-	   $(TARGET_DEVICE)
+	   $(TARGET_DEVICE) \
+	   $(BOOT_ZIP_OUT_FILE)
 
 endif    # build_ota_package
 # -----------------------------------------------------------------
