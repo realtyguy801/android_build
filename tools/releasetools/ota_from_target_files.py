@@ -823,7 +823,7 @@ else if get_stage("%(bcb_dev)s") == "3/3" then
   script.ShowProgress(0.05, 5)
   script.WriteRawImage("/boot", "boot.img")
 
-  if block_based:
+  if OPTIONS.info_dict.get("with_magisk") != "true":
     script.Print(" ")
     script.Print("Flashing Magisk...")
     script.Print(" ")

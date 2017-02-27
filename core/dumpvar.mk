@@ -1,7 +1,7 @@
 
 # List of variables we want to print in the build banner.
 print_build_config_vars := \
-  RR_VERSION \
+  RR_BUILDTYPE \
   TARGET_PRODUCT \
   TARGET_ARCH \
   TARGET_ARCH_VARIANT \
@@ -14,6 +14,10 @@ print_build_config_vars := \
   LLVM_RELEASE_VERSION \
   OUT_DIR
 
+ifeq ($(WITH_MAGISK),true)
+print_build_config_vars += \
+  WITH_MAGISK
+endif
 ifeq ($(WITH_SU),true)
 print_build_config_vars += \
   WITH_SU
