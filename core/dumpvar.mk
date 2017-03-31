@@ -14,6 +14,10 @@ print_build_config_vars := \
   LLVM_RELEASE_VERSION \
   OUT_DIR
 
+ifeq ($(WITH_PN_GAPPS),true)
+print_build_config_vars += \
+  WITH_PN_GAPPS
+endif
 ifeq ($(WITH_MAGISK),true)
 print_build_config_vars += \
   WITH_MAGISK

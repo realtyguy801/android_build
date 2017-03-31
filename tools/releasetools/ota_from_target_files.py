@@ -697,6 +697,7 @@ else if get_stage("%(bcb_dev)s") == "3/3" then
     buildday = GetBuildProp("ro.build.date", OPTIONS.info_dict)
     securep = GetBuildProp("ro.build.version.security_patch", OPTIONS.info_dict)
     rootm = GetBuildProp("ro.rr.root", OPTIONS.info_dict)
+    pngapps = GetBuildProp("ro.pn.gapps", OPTIONS.info_dict)
     buildhst = GetBuildProp("ro.build.host", OPTIONS.info_dict)
     density = GetBuildProp("ro.sf.lcd_density", OPTIONS.info_dict)
     device = GetBuildProp("ro.rr.device", OPTIONS.info_dict)
@@ -716,6 +717,8 @@ else if get_stage("%(bcb_dev)s") == "3/3" then
     script.Print(" Root status: Enabled");
     script.Print("");
     script.Print(" Root type: %s"%(rootm));
+    script.Print("");
+    script.Print(" PN Gapps Installed: %s"%(pngapps));
     script.Print("");
     script.Print(" Build ID: %s"%(buildidn));
     script.Print("");
