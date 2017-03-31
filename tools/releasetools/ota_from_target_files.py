@@ -718,7 +718,7 @@ else if get_stage("%(bcb_dev)s") == "3/3" then
     script.Print("");
     script.Print(" Root type: %s"%(rootm));
     script.Print("");
-    script.Print(" PN Gapps Installed: %s"%(pngapps));
+    script.Print(" PN Gapps: %s"%(pngapps));
     script.Print("");
     script.Print(" Build ID: %s"%(buildidn));
     script.Print("");
